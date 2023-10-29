@@ -5,7 +5,7 @@ import { themeColors } from '../theme'
 export default function IntroScreen(){
         const navigation = useNavigation();
     useEffect(()=>{
-      setTimeout(()=>{navigation.navigate('Home')},3000);
+      setTimeout(()=>{navigation.navigate('Login')},3000);
     })
     return(
         <ImageBackground style={{width:'100%', height:'100%', flex:1, justifyContent:'center',alignItems:'center'}}  source={require('../assets/images/intro.jpg')}>
