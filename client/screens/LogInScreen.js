@@ -13,9 +13,7 @@ import {vh, vw} from 'react-native-expo-viewport-units';
 import React, { useLayoutEffect, useState, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { themeColors } from '../theme'
-import * as Location from 'expo-location';
 import BottomNavigator from '../bottomNavigation';
-
 export default function LogInScreen(){
   const navigation=useNavigation();
   const styles = StyleSheet.create({
@@ -70,28 +68,6 @@ const TextInputAvoidingView = ({children}: AvoidingViewProps) => {
   );
 };
 
-  //     const [location, setLocation] = useState(null);
-  // const [errorMsg, setErrorMsg] = useState(null);
-  //   useEffect(() => {
-  //   (async () => {
-  //     let { status } = await Location.requestForegroundPermissionsAsync();
-  //     if (status !== 'granted') {
-  //       setErrorMsg('Permission to access location was denied');
-  //       return;
-  //     }
-
-  //     let location = await Location.getCurrentPositionAsync({});
-  //     setLocation(location);
-  //     console.log(location);
-  //   })();
-  // }, []);
-
-  //   let text;
-  // if (errorMsg) {
-  //   text = errorMsg;
-  // } else if (location) {
-  //   text = JSON.stringify(location);
-  // }
     return(
 <View style="flex-1">
     <Image source={require('../assets/login.png')} style={{height:'50%',width:'100%', marginBottom:100}}/>
@@ -149,7 +125,7 @@ const TextInputAvoidingView = ({children}: AvoidingViewProps) => {
     	<TouchableOpacity style={{bordeRadius: '19px',backgroundColor: '#5383EC',width:'100%',
 height: '40%', alignItems:'center', justifyContent:'center', marginBottom:5}} className="border-2 rounded" onPress={()=>navigation.navigate("Home")}>
   {/* <Icon.Facebook></Icon.Facebook> */}
-<Text className="text-center text-white">Sign in with Facebook </Text>
+<Text className="text-center text-white     ">Sign in with Facebook </Text>
 </TouchableOpacity>
     	<TouchableOpacity style={{bordeRadius: '19px',backgroundColor: '#166332;',width:'100%',
 height: '40%', alignItems:'center', justifyContent:'center'}} className="border-2 rounded" onPress={()=>navigation.navigate("Home")}>
