@@ -24,7 +24,7 @@ export default function HomeScreen() {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
   const [visible, setVisible] = React.useState(false);
-  const [currentAdress, setCurrentAdress] =useState(null);
+  const [currentAdress, setCurrentAdress] =useState("Dhaka, Bangladesh");
   const [adresses, setAdresses] =useState([]);
 
   const openMenu = () => setVisible(true);
@@ -41,7 +41,6 @@ export default function HomeScreen() {
       }
       let location = await Location.getCurrentPositionAsync({});
       setLocation(location);
-      console.log(location);
     })();
   }, []);
   useEffect(() => {
@@ -55,9 +54,6 @@ export default function HomeScreen() {
     )
       .then((response) => response.json())
       .then((responseJson) => {
-        console.log(
-          "ADDRESS GEOCODE is BACK!! => " + JSON.stringify(responseJson.results)
-        );
         setAdresses(responseJson.results);
       });
   }, [location]);

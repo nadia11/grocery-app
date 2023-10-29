@@ -9,11 +9,11 @@ import DeliveryScreen from './screens/DeliveryScreen';
 import IntroScreen from './screens/IntroScreen';
 import LogInScreen from './screens/LogInScreen';
 
-const Stack = createNativeStackNavigator();
+
 
 export default function Navigation() {
+  const Stack = createNativeStackNavigator();
   return (
-    <NavigationContainer>
         <Stack.Navigator initialRouteName='Intro'>
            <Stack.Screen name="Intro" options={{ presentation: 'fullScreenModal', headerShown: false }} component={IntroScreen} />
             <Stack.Screen name="Login" options={{ presentation: 'fullScreenModal', headerShown: false }} component={LogInScreen} />
@@ -23,6 +23,5 @@ export default function Navigation() {
             <Stack.Screen name="PreparingOrder" options={{ presentation: 'fullScreenModal', headerShown: false }} component={PreparingOrderScreen} />
             <Stack.Screen name="Delivery" options={{ presentation: 'fullScreenModal', headerShown: false }} component={DeliveryScreen} />
         </Stack.Navigator>
-    </NavigationContainer>
   );
 }
