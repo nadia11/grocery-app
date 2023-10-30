@@ -2,6 +2,7 @@ import { View, Text, SafeAreaView, StatusBar, Image, TextInput, ScrollView,Image
 import React, { useLayoutEffect, useState, useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { themeColors } from '../theme'
+import BottomNavigator from '../bottomNavigation'
 export default function IntroScreen(){
         const navigation = useNavigation();
     useEffect(()=>{
@@ -12,5 +13,6 @@ export default function IntroScreen(){
                  <Image source={require('../assets/GroceryIcon.jpg')} className="h-8 w-12 rounded-sm" />
         <Text style={{color: '#FFF',textAlign:'center', fontSize:36, fontWeight:'800'}}>FreshFind</Text>
         </ImageBackground>
+       
     );
 }

@@ -13,8 +13,11 @@ import PreparingOrderScreen from './screens/PreparingOrderScreen';
 import DeliveryScreen from './screens/DeliveryScreen';
 import IntroScreen from './screens/IntroScreen';
 import LogInScreen from './screens/LogInScreen';
+import SearchScreen from './screens/SearchScreen';
+import SettingsScreen from './screens/SettingsScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import React, { useLayoutEffect, useState, useEffect } from 'react'
+import {createRef} from 'react';
 
 export default function App() {
     const [isInitialized, setIsInitialized] = React.useState(false);
@@ -35,9 +38,8 @@ export default function App() {
              <SafeAreaProvider>
                      <NavigationContainer>
             <Drawer.Navigator>
-              <Drawer.Screen name="Settings" component={HomeScreen}/>
-              <Drawer.Screen name="findDoctor" component={LogInScreen} options={{title: 'Find Doctor in Feni'}} />
-              <Drawer.Screen name="Navigation"  component={Navigation} options={{headerShown: false}}/>
+              <Drawer.Screen name="Screen1"  component={Navigation} options={{headerShown: false}}/>
+              <Drawer.Screen name="Screen2" component={SettingsScreen} options={{title: 'Settings'}} />
             </Drawer.Navigator>
             </NavigationContainer>
           </SafeAreaProvider>

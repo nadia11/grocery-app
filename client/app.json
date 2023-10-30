@@ -12,6 +12,12 @@
         {
           "locationAlwaysAndWhenInUsePermission": "Allow Grocery-App to use your location."
         }
+      ],
+      [
+        "@stripe/stripe-react-native",
+        {
+          "enableGooglePay": false
+        }
       ]
     ],
     "splash": {

@@ -8,34 +8,25 @@ import DeliveryScreen from './screens/DeliveryScreen';
 import IntroScreen from './screens/IntroScreen';
 import LogInScreen from './screens/LogInScreen';
 import * as React from 'react';
-import { BottomNavigation, Text } from 'react-native-paper';
-
-const MusicRoute = () => <Text>Music</Text>;
-
-const AlbumsRoute = () => <Text>Albums</Text>;
-
-const RecentsRoute = () => <Text>Recents</Text>;
-
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import SearchScreen from './screens/SearchScreen';
+import SettingsScreen from './screens/SettingsScreen';
+import CategoriesScreen from './screens/CategoriesScreen';
+import Navigation from './navigation';
+import { NavigationContainer } from '@react-navigation/native';
+import DarkTheme from '@react-navigation/native';
 export default function BottomNavigator() {
-   const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
-    { key: 'music', title: 'Music', icon: 'queue-music' },
-    { key: 'albums', title: 'Albums', icon: 'album' },
-    { key: 'recents', title: 'Recents', icon: 'history' },
-  ]);
-
-  const renderScene = BottomNavigation.SceneMap({
-    music: HomeScreen,
-    albums: DeliveryScreen,
-    recents: IntroScreen,
-  });
-
+const Tab = createBottomTabNavigator();
   return (
-    <BottomNavigation
-      navigationState={{ index, routes }}
-      onIndexChange={setIndex}
-      renderScene={renderScene}
-    />
+    <Tab.Navigator screenOptions={{ headerShown: false }}>
+
+      <Tab.Screen name="Tab2" component={CategoriesScreen}   options={{
+          tabBarLabel: "Home",
+        }}/>
+       <Tab.Screen name="Tab3" component={SearchScreen}   options={{
+          tabBarLabel: "Search",
+        }}/>
+    </Tab.Navigator>
   );
 
 }

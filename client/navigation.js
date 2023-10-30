@@ -14,7 +14,7 @@ import LogInScreen from './screens/LogInScreen';
 export default function Navigation() {
   const Stack = createNativeStackNavigator();
   return (
-        <Stack.Navigator initialRouteName='Intro'>
+        <Stack.Navigator initialRouteName='Intro' screenOptions={{ headerShown: false }}>
            <Stack.Screen name="Intro" options={{ presentation: 'fullScreenModal', headerShown: false }} component={IntroScreen} />
             <Stack.Screen name="Login" options={{ presentation: 'fullScreenModal', headerShown: false }} component={LogInScreen} />
             <Stack.Screen name="Home" component={HomeScreen} />
