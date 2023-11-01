@@ -18,6 +18,12 @@ export const getCategories = ()=>{
     return sanityQuery(`
         *[_type == 'category']
     `);
+
+}
+export const getDishes = () =>{
+    return sanityQuery(`*[_type == 'dish'] {
+  ...
+}`)
 }
 
 export const getFeaturedResturantById = id=>{

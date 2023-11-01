@@ -28,24 +28,25 @@ export default function Categories() {
           {
             categories?.map(category=>{
               let isActive = category._id==activeCategory;
-              let btnClass = isActive? ' bg-gray-600': ' bg-gray-200';
-              let textClass = isActive? ' font-semibold text-gray-800': ' text-gray-500';
+              let btnClass = isActive? ' bg-gray-300': ' bg-gray-200';
+              let textClass = isActive? ' font-semibold text-green-800': ' text-gray-500';
               return(
-                <View key={category._id} className="flex justify-center items-center mr-6">
-                  <TouchableOpacity 
-                    onPress={()=> setActiveCategory(category._id)} 
-                    className={"p-1 rounded-full shadow"+ btnClass}>
-                   {/* {urlFor(category.image).url() && <Image style={{width: 45, height: 45}} source={{
-                        uri: urlFor(category.image).url(),
-                    }}
-                    />} */}
+                <View key={category._id} className="flex justify-center items-center mr-3">
+                  <TouchableOpacity
+                    onPress={()=> setActiveCategory(category._id)}
+                    className={"px-2 py-1 rounded-md shadow"+ btnClass}>
+                 {/* {category.image && (<Image style={{width: 65, height: 20, borderRadius:6}} source={{ uri: urlFor(category.image).url()}}
+                    />)
+              } */}
+                <Text className={"text-sm "+textClass}>{category.name}</Text>
                   </TouchableOpacity>
-                  <Text className={"text-sm "+textClass}>{category.name}</Text>
-                </View> 
+                  {/* <Text>{category.image.asset[_ref]}</Text> */}
+                
+                </View>
               )
             })
           }
       </ScrollView>
     </View>
   )
-}
+}                                                                                                                                                                                                                                                                                                                                                                                                                     

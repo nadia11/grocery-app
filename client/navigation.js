@@ -10,9 +10,9 @@ import IntroScreen from './screens/IntroScreen';
 import LogInScreen from './screens/LogInScreen';
 
 
-
-export default function Navigation() {
   const Stack = createNativeStackNavigator();
+export default function Navigation() {
+
   return (
         <Stack.Navigator initialRouteName='Intro' screenOptions={{ headerShown: false }}>
            <Stack.Screen name="Intro" options={{ presentation: 'fullScreenModal', headerShown: false }} component={IntroScreen} />

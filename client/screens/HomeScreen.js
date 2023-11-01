@@ -23,7 +23,7 @@ export default function HomeScreen() {
 
   return (
     <>
-      
+     <BottomNavigator/>
     </>
   );
 }

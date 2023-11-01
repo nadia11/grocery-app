@@ -1,21 +1,39 @@
 
-import {View, StyleSheet, Image, Text, Linking,TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Image, Text, Linking,TouchableOpacity, Button} from 'react-native';
 import {
   TextInput,
-  Button,
   TouchableRipple,
   Checkbox,
   Snackbar,
   ActivityIndicator, Dialog, Paragraph, Portal, Divider,
 } from 'react-native-paper';
 // @ts-ignore
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {vh, vw} from 'react-native-expo-viewport-units';
-import React, { useLayoutEffect, useState, useEffect } from 'react'
+import React, { useLayoutEffect, useState, useEffect, useRef } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { themeColors } from '../theme'
 import BottomNavigator from '../bottomNavigation';
+import {Constants} from 'expo'
+import { User } from 'react-native-feather';
 export default function LogInScreen(){
+  const userName =useRef(null);
+  const[user,setUser]=useState("");
   const navigation=useNavigation();
+  const handleLogin=()=>{
+      const name = userName.current.value;
+  storeUser(name);
+  }
+  const storeUser = async (value) => {
+  try {
+    await AsyncStorage.setItem("user", JSON.stringify(value));
+    // const x=await AsyncStorage.getItem("user");
+    // console.log("hello"+JSON.parse(x))
+    await navigation.navigate("Home");
+  } catch (error) {
+    console.log(error);
+  }
+};
   const styles = StyleSheet.create({
   spinnerTextStyle: {
     color: 'white'
@@ -80,11 +98,11 @@ const TextInputAvoidingView = ({children}: AvoidingViewProps) => {
                 autoCorrect={false}
                 mode="outlined"
                 label="Username"
-                keyboardType="number-pad"
                 textContentType="telephoneNumber"
-                placeholder="012345678901"
-                // value={username}
-                onChangeText={text => console.log(text)}
+                 value={userName}
+                ref={userName}
+                  onChangeText={(e) => userName.current.value = e}
+                 onSubmitEditing={() => console.log(userName.current.value)}
               />
               <TextInput
                 style={styles.textInputs}
@@ -123,15 +141,16 @@ const TextInputAvoidingView = ({children}: AvoidingViewProps) => {
           </View>
           <View style={{justifyContent:'flex-end'}}>
     	<TouchableOpacity style={{bordeRadius: '19px',backgroundColor: '#5383EC',width:'100%',
-height: '40%', alignItems:'center', justifyContent:'center', marginBottom:5}} className="border-2 rounded" onPress={()=>navigation.navigate("Home")}>
+height: '40%', alignItems:'center', justifyContent:'center', marginBottom:5}} className="border-2 rounded" onPress={()=>handleLogin()}>
   {/* <Icon.Facebook></Icon.Facebook> */}
-<Text className="text-center text-white     ">Sign in with Facebook </Text>
+<Text className="text-center text-white">LogIn </Text>
 </TouchableOpacity>
-    	<TouchableOpacity style={{bordeRadius: '19px',backgroundColor: '#166332;',width:'100%',
-height: '40%', alignItems:'center', justifyContent:'center'}} className="border-2 rounded" onPress={()=>navigation.navigate("Home")}>
+    	<TouchableOpacity style={{bordeRadius: '19px',backgroundColor: '#166332',width:'100%',
+height: '40%', alignItems:'center', justifyContent:'center',color:'white'}} className="border-2 rounded" onPress={()=>navigation.navigate("Home")}>
 <Text className="text-center text-white p-5">Sign Up</Text>
 </TouchableOpacity>
   </View>
+  <Text className="text-center text-white p-5">{user}</Text>
 </View>
 </View>
     )

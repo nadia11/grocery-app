@@ -32,6 +32,7 @@ export default function CategoriesScreen() {
   const closeMenu = () => setVisible(false);
 
   const myApiKey = "AIzaSyAFtczNTP-B_sg8avMgIVEkwsEwIdlaMXY";
+  
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -74,13 +75,12 @@ export default function CategoriesScreen() {
   }, []);
     return(
 <SafeAreaView>
-       <StatusBar barStyle="dark-content" currentHeight={20} />
-      <View className="flex-row items-center px-4 pb-2 py-4">
-        <View className="flex-row flex-1 items-center p-3 rounded-sm border border-gray-300">
-          <View/>
+       <StatusBar barStyle="light-content" currentHeight={20} />
+      <View className="flex-row items-center px-4 pb-2 py-4 mt-2">
+        <View className="flex-row flex-1 items-center p-3 rounded-sm border border-gray-300 justify-end">
           <View className="flex-row items-center">
             <Icon.MapPin height="20" width="20" stroke="gray" onPress={openMenu} color={themeColors.bgColor(1)}/>
-            <Text className="text-gray-600">{currentAdress}</Text>
+            <Text className="text-gray-600 mr-4">{currentAdress}</Text>
             <View
               style={{
                 flexDirection: "row",
@@ -92,7 +92,7 @@ export default function CategoriesScreen() {
                 onDismiss={closeMenu}
                 anchor={
                         <TouchableOpacity style={{backgroundColor: themeColors.bgColor(1)}} className="p-3 rounded-full" onPress={openMenu}>
-                <Icon.Sliders height={20} width={20} strokeWidth="2.5" stroke="white" /></TouchableOpacity>}
+                <Icon.Edit height={10} width={10} strokeWidth="2.5" stroke="white" /></TouchableOpacity>}
               >{adresses.map(adress=>{return(   <View>
                 <Menu.Item onPress={() => {setCurrentAdress(adress.formatted_address)}} title={adress.formatted_address} />
                       <Divider />
