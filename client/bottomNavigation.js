@@ -21,20 +21,20 @@ const Tab = createBottomTabNavigator();
     <Tab.Navigator screenOptions={{ headerShown: false }}>
 
       <Tab.Screen name="Tab2" component={CategoriesScreen}   options={{
-          tabBarLabel: "Home",
+          tabBarLabel: "Categories",
            tabBarIcon: ({ color, size }) => (
             <Icon.Home height="25" width="25" stroke="gray" />
           ),
             tabBarActiveTintColor:'green'
         }}/>
-       <Tab.Screen name="Tab3" component={SearchScreen}   options={{
+       <Tab.Screen name="Search" component={SearchScreen}   options={{
           tabBarLabel: "Search",
             tabBarIcon: ({ color, size }) => (
             <Icon.Search height="25" width="25" stroke="gray" />
           ),
           tabBarActiveTintColor:'green'
         }}/>
-          <Tab.Screen name="Tab4" component={PaymentScreen}   options={{
+          <Tab.Screen name="Payment" component={PaymentScreen}   options={{
           tabBarLabel: "Payment",
             tabBarIcon: ({ color, size }) => (
             <Icon.CreditCard height="25" width="25" stroke="gray" />

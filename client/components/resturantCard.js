@@ -21,7 +21,6 @@ export default function ResturantCard({
     lng,
     lat
 }) {
-   console.log(urlFor(imgUrl).url());
   const navigation = useNavigation();
   return (
     <TouchableWithoutFeedback onPress={()=>{

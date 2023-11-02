@@ -26,6 +26,12 @@ export const getDishes = () =>{
 }`)
 }
 
+export const getBanners = () =>{
+    return sanityQuery(`*[_type == 'banner'] {
+  ...
+}`)
+}
+
 export const getFeaturedResturantById = id=>{
     return sanityQuery(`
         *[_type == 'featured' && _id == $id] {

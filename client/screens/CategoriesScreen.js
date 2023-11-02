@@ -5,7 +5,7 @@ import {
   StatusBar,
   Image,
   TextInput,
-  ScrollView, TouchableOpacity
+  ScrollView, TouchableOpacity, ImageBackground
 } from "react-native";
 import React, { useLayoutEffect, useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
@@ -17,6 +17,7 @@ import { themeColors } from "../theme";
 import BottomNavigator from "../bottomNavigation";
 import * as Location from "expo-location";
 import { Button, Menu, Divider, PaperProvider } from "react-native-paper";
+import Banner from "../components/banner";
 
 export default function CategoriesScreen() {
       const [featuredCategories, setFeaturedCategories] = useState([]);
@@ -32,7 +33,7 @@ export default function CategoriesScreen() {
   const closeMenu = () => setVisible(false);
 
   const myApiKey = "AIzaSyAFtczNTP-B_sg8avMgIVEkwsEwIdlaMXY";
-  
+
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
@@ -111,9 +112,14 @@ export default function CategoriesScreen() {
         }}
       >
         <Categories />
-
+        <Banner/>
+<ImageBackground source={require('../assets/green_background.jpg')} imageStyle={{ borderRadius:5}} style={{margin:15,padding:5, flex:1, alignItems:'center', justifyContent:'center'}}>
+  <Text>Daily Deals</Text>
+    <Text style={{fontWeight: 'bold',fontSize:20}}>Order over 9$ to activate</Text>
+        <Text>*Limited Stock</Text>
+</ImageBackground>
         {setFeaturedCategories && (
-          <View className="mt-5">
+          <View>
             {featuredCategories?.map((category) => {
               return (
                 <FeatureRow

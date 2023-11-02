@@ -45,15 +45,14 @@ export default function BasketScreen() {
             <Text className="text-center font-bold text-xl">Your cart</Text>
             <Text className="text-center text-gray-500">{resturant.title}</Text>
         </View>
-        
       </View>
 
      {/* delivery time */}
       <View style={{backgroundColor: themeColors.bgColor(0.2)}} className="flex-row px-4 items-center">
             <Image source={require('../assets/images/bikeGuy.png')} className="w-20 h-20 rounded-full" />
-            <Text className="flex-1 pl-4" style={{color:'white'}}>Deliver in 20-30 minutes</Text>
-            <TouchableOpacity>
-                <Text style={{color: themeColors.text}} className="font-bold">Change</Text>
+            <Text className="flex-1 pl-4" style={{color:'white'}}>Pay via cash after delivery</Text>
+            <TouchableOpacity onPress={()=>navigation.navigate("Payment")}>
+                <Text style={{color: themeColors.text}} className="font-bold">Other</Text>
             </TouchableOpacity>
       </View>
 
@@ -64,7 +63,6 @@ export default function BasketScreen() {
        contentContainerStyle={{
         paddingBottom: 50
        }}
-       
        >
             {
                 Object.entries(groupedItems).map(([key, items])=>{

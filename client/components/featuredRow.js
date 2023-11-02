@@ -7,14 +7,7 @@ import * as Icon from "react-native-feather";
 import { themeColors } from '../theme'
 
 export default function FeatureRow({id, title, description, restaurants}) {
-
-  // const [resturants, setResturants] = useState([]);
-
   useEffect(() => {
-    // getFeaturedResturantById(id).then(data=>{
-    //   // console.log('got data: ',data);
-    //   setResturants(data?.resturants);
-    // })
   }, [id])
 
   return (
@@ -27,7 +20,7 @@ export default function FeatureRow({id, title, description, restaurants}) {
           </Text>
         </View>
         <TouchableOpacity>
-          <Text style={{color: themeColors.text}} className="font-semibold">See All</Text>
+          <Text style={{color: 'green'}} className="font-semibold">See All</Text>
         </TouchableOpacity>
       </View>
 
@@ -59,9 +52,8 @@ export default function FeatureRow({id, title, description, restaurants}) {
               />
             )
           })
-        }           
+        }
        </ScrollView>
-    
     </View>
   )
 }

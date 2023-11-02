@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { View,Text } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import Navigation from "./navigation";
 import { store } from "./store";

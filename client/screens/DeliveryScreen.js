@@ -61,7 +61,7 @@ export default function DeliveryScreen() {
             </View>
             
             <View className="flex-1 ml-3">
-                <Text className="text-lg font-bold text-white">Syed Noman</Text>
+                <Text className="text-lg font-bold text-white">Nadia Tabassum</Text>
                 <Text className="text-white font-semibold">Your Rider</Text>
             </View>
             <View  className="flex-row items-center space-x-3 mr-3">
