@@ -7,7 +7,7 @@ import { CardField, useConfirmPayment } from "@stripe/stripe-react-native";
 import { themeColors } from '../theme';
 import { useNavigation } from '@react-navigation/native';
 //ADD localhost address of your server
-const API_URL = "http://192.168.0.103:3000";
+const API_URL = "https://express-common1.onrender.com";
 
 export default function PaymentScreen(props) {
   const [email, setEmail] = useState();
@@ -41,6 +41,9 @@ export default function PaymentScreen(props) {
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        "Amount":basketTotal+deliveryFee,
+      })
     });
     const { clientSecret, error } = await response.json();
     return { clientSecret, error };
@@ -66,7 +69,7 @@ export default function PaymentScreen(props) {
         console.log("Unable to process payment");
       } else {
         const { paymentIntent, error } = await confirmPayment(clientSecret, {
-          paymentMethodType: "Card ",
+          paymentMethodType: "Card",
           billingDetails: billingDetails,
         });
         if (error) {
@@ -74,7 +77,7 @@ export default function PaymentScreen(props) {
           console.log(error.stack || error);
           alert(`Payment Confirmation Error ${error.message}`);
         } else if (paymentIntent) {
-          alert("Payment Successful");
+          alert("Payment Successful for tk" + basketTotal+deliveryFee);
           setPaymentSuccess(true);
         }
       }
@@ -123,8 +126,8 @@ export default function PaymentScreen(props) {
             </View>
             {paymentSuccess &&  <View>
                 <TouchableOpacity
-                style={{backgroundColor: themeColors.text}} 
-                onPress={()=> navigation.navigate('PreparingOrder')} 
+                style={{backgroundColor: themeColors.text}}
+                onPress={()=> navigation.navigate('PreparingOrder')}
                 className="p-3 rounded-full">
                     <Text className="text-white text-center font-bold text-lg">Place Order</Text>
                 </TouchableOpacity>
